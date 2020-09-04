@@ -1,0 +1,399 @@
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Soccer Geometry</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-wrapper">
+            <a href="/" class="brand-logo">Soccer Geometry</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <h1 style="text-align: center">Matches and their true odds </h1>
+        <div class="row">
+            <div class="col s4">
+                <!-- Promo Content 1 goes here -->
+                <div class="center">
+                    <i class="large material-icons" style="color: #EE6E73">flash_on</i>
+                    <p>Fast web soccer geometry calculater</p>
+                    <p class="light center">Calculate the true odds here with the beautiful GUI.</p>
+                </div>
+            </div>
+            <div class="col s4">
+                <!-- Promo Content 2 goes here -->
+                <div class="center">
+                    <i class="large material-icons" style="color: orange">camera</i>
+                    <p>Filter your searches</p>
+                    <p class="light center"> built in functionality to calculate based on markets.</p>
+                </div>
+            </div>
+            <div class="col s4">
+                <!-- Promo Content 3 goes here -->
+                <div class="center">
+                    <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
+                    <p>A much sexier front-end to Soccer Geomety</p>
+                    <p class="light center">We built this with ❤️</p>
+                </div>
+            </div>
+        </div>
+        <div class="vector">
+            <form action="{%url 'create_hometable'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action"
+                    class="btn btn-primary mb-2">create_hometable
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <div class="vector">
+            <form action="{%url 'create_awaytable'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action"
+                    class="btn btn-primary mb-2">create_awaytable
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <div class="vector">
+            <form action="{%url 'drop_home_away_stats_table'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action"
+                    class="btn btn-primary mb-2">DROP_H/A_TABLE
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+
+
+
+        <div>
+            <div class="vector">
+                <form action="{%url 'create_prediction_table'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">create_prediction
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+            <div class="vector">
+                <form action="{%url 'drop_prediction_table'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">drop_prediction
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+            <div class="vector">
+                <form action="{%url 'clear_prediction_table'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">clear_prediction
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="vector">
+                <form action="{%url 'clear_item_in_prediction_table'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <select class="custom-select" name="id">
+                        <option selected>enter id of row in table</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+
+                    </select>
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">clear_item_in_prediction
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% block content %}
+
+    {% endblock content %}
+    <div class="vector">
+
+        <form action=" {%url 'new_search'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <!-- <input type=" text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Type league here..."> -->
+            <select class="custom-select" name="search">
+                <option selected>Choose...League competition</option>
+                <option value="england">England EPL</option>
+                <option value="england2">Championship</option>
+                <option value="germany  ">Germany</option>
+                <option value="armenia ">Armenia</option>
+                <option value="armenia2">Armenia2</option>
+                <option value="austria">Austria</option>
+                <option value="austria2">Austria league 2</option>
+                <option value="australia">Australia</option>
+                <option value="australia2">Australia league 2</option>
+                <option value="czechrepublic ">CzechRepublic</option>
+                <option value="czechrepublic2">CzechRepublic league 2</option>
+                <option value="denmark">Denmark</option>
+                <option value="denmark2 ">Denmark league 2</option>
+                <option value="israel">Israel</option>
+                <option value="iran">Iran</option>
+                <option value="finland_2019">Finland_2019</option>
+
+                <option value="italy">Italy</option>
+                <option value="norway">Norway</option>
+                <option value="norway2">Norway division 2</option>
+                <option value="israel2">Israel league 2</option>
+                <option value="portugal">Portugal</option>
+                <option value="spain2">Spain league 2</option>
+                <option value="spain">Spain</option>
+                <option value="russia">Russia</option>
+                <option value="switzerland">Switzerland</option>
+                <option value="scotland_2020">Scotland_2019/2020</option>
+                <option value="ukraine2"> Ukraine league 2</option>
+                <option value="southkorea"> SouthKorea</option>
+
+
+            </select>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="vector">
+        <form action="{%url 'clear_tables_function'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <button class="btn waves-effect waves-light" type="submit" name="action" class="btn btn-primary mb-2">Clear
+                tables
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+    <div class="vector">
+        <form action="{%url 'insert_into_db_tables'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <button class="btn waves-effect waves-light" type="submit" name="action">Insert DB
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+    <div class="vector">
+        <form action="{%url 'query_tables_function'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <select class="custom-select" name="position">
+                <option selected>Hometeam position in hometable</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+
+            </select>
+            <select class="custom-select" name="position1">
+                <option selected>Awayteam position in Awaytable</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+            </select>
+            <button class="btn waves-effect waves-light" type="submit" name="action"
+                class="btn btn-primary mb-2">query_tables
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+    </div>
+    <div class="vector">
+        <form action="{%url 'append_finalpredictions_to_table'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <select class="custom-select" name="position">
+                <option selected>Hometeam position in hometable</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+            </select>
+            <select class="custom-select" name="position1">
+                <option selected>Awayteam position in Awaytable</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+            </select>
+            <button class="btn waves-effect waves-light" type="submit" name="action"
+                class="btn btn-primary mb-2">append_finalpredictions
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+    </div>
+    <div class="vector">
+        <form action="{%url 'finalprediction_of_the_day'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <button class="btn waves-effect waves-light" type="submit" name="action"
+                class="btn btn-primary mb-2">finalprediction
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

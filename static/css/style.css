@@ -1,0 +1,73 @@
+.select, .container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    
+
+
+}
+.vector,.vector1{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    float: left;
+    width: fit-content;
+    height: fit-content;
+    
+}
+
+
+
+   
+
+
+    
+
+
+.nav{
+    height: 100px;
+    background-color: #333;
+    color: whitesmoke;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo_list, .Contact_Card {
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow: 
+            0 1px 1px rgba(0, 0,0, 0.15),
+            0 10px 0 -5px #eee,
+            0 10px -4px rgba(0, 0,0, 0.15),
+            0 20px  0 -10px #eee,
+            0 20px 1px  -9px rgba(0, 0,0, 0.15);
+    padding: 30px;
+
+}
+.todo_item, .Contact_Card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px 0px;
+    width: 70%;
+    border-bottom: 1pt solid #c0c0c0;
+    font-family: Roboto,sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    color: #333333;
+
+   
+}
+input[type=checkbox]{
+margin-right: 10px;
+}
+   

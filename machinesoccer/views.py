@@ -1138,12 +1138,14 @@ def find_finalprediction_of_the_day(request):
 
 
 def find_finalprediction_of_the_day_prev(request):
-    y = request.POST.get("matchid")
-    p = int(y)
-    x = p - 1
+    y = request.POST.get("matchidentity")
+    print(y)
+    ppp = int(y)
+    x = ppp - 1
 
     conn = sqlite3.connect("soccer.db")
     c = conn.cursor()
+
     c.execute(
         "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
         (x,),

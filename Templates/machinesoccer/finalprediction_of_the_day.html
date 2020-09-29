@@ -40,21 +40,32 @@
                         <div class="vector">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </div>
+
+
                     </form>
-                    <div>
+                    <form action=" {%url 'find_finalprediction_of_the_day_prev'%}" method="POST" class="form-inline">
+                        {% csrf_token %}
                         <div class="vector">
-                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Prev</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Prev</button>
                         </div>
+                    </form>
+                    <form action=" {%url 'find_finalprediction_of_the_day_next'%}" method="POST" class="form-inline">
+                        {% csrf_token %}
                         <div class="vector">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Next</button>
                         </div>
+                    </form>
+                    <div>
+
                     </div>
                 </nav>
             </div>
             <div class="card-content">
 
                 <div class="card-content">
-                    <p> Match {{post.0}}</p>
+                    <p> Match
+                    <div name="matchidentity">{{post.0}}</div>
+                    </p>
                     <p>{{post.1}}</p>
                     <div class="vector">
                         <p><button type="button" class="btn btn-warning ">{{post.2}}</button></p>

@@ -56,5 +56,20 @@ urlpatterns = [
         views.drop_home_away_stats_table,
         name="drop_home_away_stats_table",
     ),
+    path(
+        "find_finalprediction_of_the_day",
+        views.find_finalprediction_of_the_day,
+        name="find_finalprediction_of_the_day",
+    ),
+    path(
+        "find_finalprediction_of_the_day_prev",
+        views.find_finalprediction_of_the_day_prev,
+        name="find_finalprediction_of_the_day_prev",
+    ),
+    path(
+        "find_finalprediction_of_the_day_next",
+        views.find_finalprediction_of_the_day_next,
+        name="find_finalprediction_of_the_day_next",
+    ),
 ]
 

@@ -26,11 +26,31 @@
                 </ul>
             </div>
         </nav>
+
         {% for post in finalforecast%}
         <div class="card">
-            <!-- <div class="card-image">
-            <a href="{{post.1}}"><img src="{{post.3}}" alt=""></a>
-          </div> -->
+            <div class="card">
+                <nav class="navbar navbar-light bg-light">
+                    <form action=" {%url 'find_finalprediction_of_the_day'%}" method="POST" class="form-inline">
+                        {% csrf_token %}
+                        <div class="vector">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Enter match id here..."
+                                name="matchid" aria-label="Search">
+                        </div>
+                        <div class="vector">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </form>
+                    <div>
+                        <div class="vector">
+                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Prev</button>
+                        </div>
+                        <div class="vector">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Next</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
             <div class="card-content">
 
                 <div class="card-content">

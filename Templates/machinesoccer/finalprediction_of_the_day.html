@@ -46,12 +46,14 @@
                     <form action=" {%url 'find_finalprediction_of_the_day_prev'%}" method="POST" class="form-inline">
                         {% csrf_token %}
                         <div class="vector">
+                            <input type="hidden" name="match_identity" value="{{post.0}}">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Prev</button>
                         </div>
                     </form>
                     <form action=" {%url 'find_finalprediction_of_the_day_next'%}" method="POST" class="form-inline">
                         {% csrf_token %}
                         <div class="vector">
+                            <input type="hidden" name="match_identity" value="{{post.0}}">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Next</button>
                         </div>
                     </form>
@@ -64,7 +66,7 @@
 
                 <div class="card-content">
                     <p> Match
-                    <div name="matchidentity">{{post.0}}</div>
+                    <div type="search" name="matchidentity">{{post.0}}</div>
                     </p>
                     <p>{{post.1}}</p>
                     <div class="vector">
@@ -76,29 +78,32 @@
                 </div>
                 <div class="card-content">
 
+
                     <div class="vector">
-                        <p>HPG : <button type="button" class="btn btn-primary btn-sm">{{post.4}}</button></p>
+                        <button type="button" class="btn btn-outline-primary my-2 my-sm-0">HPG {{post.4}}</button>
+
                     </div>
                     <div class="vector">
-                        <p> APG: <button type="button" class="btn btn-primary btn-sm">{{post.5}}</button></p>
+                        <button type="button" class="btn btn-outline-primary my-2 my-sm-0">APG {{post.5}}</button>
+
                     </div>
                 </div>
 
                 <div class="card-content">
                     <div class="vector1">
-                        <p>Home
-                            <button type="button" class="btn btn-primary btn-sm">{{post.6}}</button>
-                        </p>
+                        <label>HOME</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.6}}</button>
+
                     </div>
                     <div class="vector1">
-                        <p>Draw
-                            <button type="button" class="btn btn-primary btn-sm">{{post.7}}</button>
-                        </p>
+                        <label>DRAW</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.7}}</button>
+
                     </div>
                     <div class="vector1">
-                        <p> Away
-                            <button type="button" class="btn btn-primary btn-sm">{{post.8}}</button>
-                        </p>
+                        <label>AWAY</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.8}}</button>
+
                     </div>
                 </div>
 
@@ -111,24 +116,24 @@
 
                 <div class="card-content">
                     <div class="vector1">
-                        <p> over 1.5
-                            <button type="button" class="btn btn-primary btn-sm">{{post.16}}</button>
-                        </p>
+                        <label>OVER 1.5</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.16}}</button>
+
                     </div>
                     <div class="vector1">
-                        <p> under 1.5
-                            <button type="button" class="btn btn-primary btn-sm">{{post.17}}</button>
-                        </p>
+                        <label>UNDER 1.5</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.17}}</button>
+
                     </div>
                 </div>
                 <div class="card-content">
                     <div class="vector1">
-                        <p> over 2.5
-                            <button type="button" class="btn btn-primary btn-sm">{{post.22}}</button>
-                        </p>
+                        <label>OVER 2.5</label>
+                        <button type="button" class="btn btn-primary btn-sm">{{post.22}}</button>
+
                     </div>
                     <div class="vector1">
-                        <p> under 2.5
+                        <p> <label>UNDER 2.5</label>
                             <button type="button" class="btn btn-primary btn-sm">{{post.23}}</button>
                         </p>
                     </div>

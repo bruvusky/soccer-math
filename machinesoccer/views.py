@@ -939,608 +939,646 @@ def finalprediction_of_the_day(request):
 
 
 def find_finalprediction_of_the_day(request):
-    x = request.POST.get("matchid")
+    y = request.POST.get("match_identity", "")
     conn = sqlite3.connect("soccer.db")
     c = conn.cursor()
+    p = y
+    x = p
     c.execute(
-        "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
+        "SELECT Hometeam FROM 'finalprediction' WHERE rowid = ?", (x,),
     )
-    matches_predicted = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted1 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted2 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted3 = c.fetchall()
+    matches_available = c.fetchall()
 
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted4 = c.fetchall()
-    c.execute(
-        "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted5 = c.fetchall()
-    finalforecast = []
-    for match in matches_predicted:
-        p = (match)[0]
-        p1 = (match)[1]
-        p2 = (match)[2]
-        p3 = (match)[3]
-        p4 = (match)[4]
-        p5 = (match)[5]
-        p6 = (match)[6]
-        p7 = (match)[7]
-        p8 = (match)[8]
+    # conn.commit()
+    # conn.close()
 
-    for match in matches_predicted1:
-        q = (match)[0]
-        q1 = (match)[1]
-        q2 = (match)[2]
-
-    for match in matches_predicted2:
-        r = (match)[0]
-        r1 = (match)[1]
-        r2 = (match)[2]
-        r3 = (match)[3]
-        r4 = (match)[4]
-        r5 = (match)[5]
-
-    for match in matches_predicted3:
-        s = (match)[0]
-        s1 = (match)[1]
-        s2 = (match)[2]
-        s3 = (match)[3]
-        s4 = (match)[4]
-        s5 = (match)[5]
-    for match in matches_predicted4:
-        t = (match)[0]
-        t1 = (match)[1]
-        t2 = (match)[2]
-        t3 = (match)[3]
-        t4 = (match)[4]
-        t5 = (match)[5]
-
-    for match4 in matches_predicted5:
-        u = (match4)[0]
-
-        u1 = (match4)[1]
-        u2 = (match4)[2]
-        u3 = (match4)[3]
-        u4 = (match4)[4]
-        u5 = (match4)[5]
-        u6 = (match4)[6]
-        u7 = (match4)[7]
-        u8 = (match4)[8]
-        u9 = (match4)[9]
-        u10 = (match4)[10]
-        u11 = (match4)[11]
-        u12 = (match4)[12]
-        u13 = (match4)[13]
-        u14 = (match4)[14]
-        u15 = (match4)[15]
-        u16 = (match4)[16]
-        u17 = (match4)[17]
-        u18 = (match4)[18]
-        u19 = (match4)[19]
-        u20 = (match4)[20]
-        u21 = (match4)[21]
-        u22 = (match4)[22]
-        u23 = (match4)[23]
-        u24 = (match4)[24]
-        u25 = (match4)[25]
-        u26 = (match4)[26]
-        u27 = (match4)[27]
-        u28 = (match4)[28]
-        u29 = (match4)[29]
-        u30 = (match4)[30]
-        u31 = (match4)[31]
-        u32 = (match4)[32]
-        u33 = (match4)[33]
-        u34 = (match4)[34]
-        u35 = (match4)[35]
-        u36 = (match4)[36]
-    finalforecast.append(
-        (
-            p,
-            p1,
-            p2,
-            p3,
-            p4,
-            p5,
-            p6,
-            p7,
-            p8,
-            q,
-            q1,
-            q2,
-            r,
-            r1,
-            r2,
-            r3,
-            r4,
-            r5,
-            s,
-            s1,
-            s2,
-            s3,
-            s4,
-            s5,
-            t,
-            t1,
-            t2,
-            t3,
-            t4,
-            t5,
-            u,
-            u1,
-            u2,
-            u3,
-            u4,
-            u5,
-            u6,
-            u7,
-            u8,
-            u9,
-            u10,
-            u11,
-            u12,
-            u13,
-            u14,
-            u15,
-            u16,
-            u17,
-            u18,
-            u19,
-            u20,
-            u21,
-            u22,
-            u23,
-            u24,
-            u25,
-            u26,
-            u27,
-            u28,
-            u29,
-            u30,
-            u31,
-            u32,
-            u33,
-            u34,
-            u35,
-            u36,
+    if len(matches_available) != 0:
+        c.execute(
+            "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
         )
-    )
-    print("command executed succesfully")
+        matches_predicted = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted1 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted2 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted3 = c.fetchall()
 
-    stuff_for_frontend = {
-        "finalforecast": finalforecast,
-    }
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted4 = c.fetchall()
+        c.execute(
+            "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted5 = c.fetchall()
+        finalforecast = []
+        for match in matches_predicted:
+            p = (match)[0]
+            p1 = (match)[1]
+            p2 = (match)[2]
+            p3 = (match)[3]
+            p4 = (match)[4]
+            p5 = (match)[5]
+            p6 = (match)[6]
+            p7 = (match)[7]
+            p8 = (match)[8]
 
-    conn.commit()
-    conn.close()
+        for match in matches_predicted1:
+            q = (match)[0]
+            q1 = (match)[1]
+            q2 = (match)[2]
 
-    return render(
-        request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
-    )
+        for match in matches_predicted2:
+            r = (match)[0]
+            r1 = (match)[1]
+            r2 = (match)[2]
+            r3 = (match)[3]
+            r4 = (match)[4]
+            r5 = (match)[5]
+
+        for match in matches_predicted3:
+            s = (match)[0]
+            s1 = (match)[1]
+            s2 = (match)[2]
+            s3 = (match)[3]
+            s4 = (match)[4]
+            s5 = (match)[5]
+        for match in matches_predicted4:
+            t = (match)[0]
+            t1 = (match)[1]
+            t2 = (match)[2]
+            t3 = (match)[3]
+            t4 = (match)[4]
+            t5 = (match)[5]
+
+        for match4 in matches_predicted5:
+            u = (match4)[0]
+
+            u1 = (match4)[1]
+            u2 = (match4)[2]
+            u3 = (match4)[3]
+            u4 = (match4)[4]
+            u5 = (match4)[5]
+            u6 = (match4)[6]
+            u7 = (match4)[7]
+            u8 = (match4)[8]
+            u9 = (match4)[9]
+            u10 = (match4)[10]
+            u11 = (match4)[11]
+            u12 = (match4)[12]
+            u13 = (match4)[13]
+            u14 = (match4)[14]
+            u15 = (match4)[15]
+            u16 = (match4)[16]
+            u17 = (match4)[17]
+            u18 = (match4)[18]
+            u19 = (match4)[19]
+            u20 = (match4)[20]
+            u21 = (match4)[21]
+            u22 = (match4)[22]
+            u23 = (match4)[23]
+            u24 = (match4)[24]
+            u25 = (match4)[25]
+            u26 = (match4)[26]
+            u27 = (match4)[27]
+            u28 = (match4)[28]
+            u29 = (match4)[29]
+            u30 = (match4)[30]
+            u31 = (match4)[31]
+            u32 = (match4)[32]
+            u33 = (match4)[33]
+            u34 = (match4)[34]
+            u35 = (match4)[35]
+            u36 = (match4)[36]
+        finalforecast.append(
+            (
+                p,
+                p1,
+                p2,
+                p3,
+                p4,
+                p5,
+                p6,
+                p7,
+                p8,
+                q,
+                q1,
+                q2,
+                r,
+                r1,
+                r2,
+                r3,
+                r4,
+                r5,
+                s,
+                s1,
+                s2,
+                s3,
+                s4,
+                s5,
+                t,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                u,
+                u1,
+                u2,
+                u3,
+                u4,
+                u5,
+                u6,
+                u7,
+                u8,
+                u9,
+                u10,
+                u11,
+                u12,
+                u13,
+                u14,
+                u15,
+                u16,
+                u17,
+                u18,
+                u19,
+                u20,
+                u21,
+                u22,
+                u23,
+                u24,
+                u25,
+                u26,
+                u27,
+                u28,
+                u29,
+                u30,
+                u31,
+                u32,
+                u33,
+                u34,
+                u35,
+                u36,
+            )
+        )
+        print("command executed succesfully")
+
+        stuff_for_frontend = {
+            "finalforecast": finalforecast,
+        }
+
+        conn.commit()
+        conn.close()
+
+        return render(
+            request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
+        )
+    else:
+        return render(request, "machinesoccer/notfound.html",)
 
 
-def find_finalprediction_of_the_day_prev(request):
-    y = request.POST.get("matchidentity")
-    print(y)
-    ppp = int(y)
-    x = ppp - 1
-
+def find_finalprediction_of_the_day_prev(request, *args, **kwargs):
+    y = request.POST.get("match_identity", "")
     conn = sqlite3.connect("soccer.db")
     c = conn.cursor()
-
+    p = int(y)
+    x = p - 1
     c.execute(
-        "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
+        "SELECT Hometeam FROM 'finalprediction' WHERE rowid = ?", (x,),
     )
-    matches_predicted = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted1 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted2 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted3 = c.fetchall()
+    matches_available = c.fetchall()
 
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted4 = c.fetchall()
-    c.execute(
-        "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted5 = c.fetchall()
-    finalforecast = []
-    for match in matches_predicted:
-        p = (match)[0]
-        p1 = (match)[1]
-        p2 = (match)[2]
-        p3 = (match)[3]
-        p4 = (match)[4]
-        p5 = (match)[5]
-        p6 = (match)[6]
-        p7 = (match)[7]
-        p8 = (match)[8]
+    # conn.commit()
+    # conn.close()
 
-    for match in matches_predicted1:
-        q = (match)[0]
-        q1 = (match)[1]
-        q2 = (match)[2]
+    if len(matches_available) != 0:
 
-    for match in matches_predicted2:
-        r = (match)[0]
-        r1 = (match)[1]
-        r2 = (match)[2]
-        r3 = (match)[3]
-        r4 = (match)[4]
-        r5 = (match)[5]
-
-    for match in matches_predicted3:
-        s = (match)[0]
-        s1 = (match)[1]
-        s2 = (match)[2]
-        s3 = (match)[3]
-        s4 = (match)[4]
-        s5 = (match)[5]
-    for match in matches_predicted4:
-        t = (match)[0]
-        t1 = (match)[1]
-        t2 = (match)[2]
-        t3 = (match)[3]
-        t4 = (match)[4]
-        t5 = (match)[5]
-
-    for match4 in matches_predicted5:
-        u = (match4)[0]
-
-        u1 = (match4)[1]
-        u2 = (match4)[2]
-        u3 = (match4)[3]
-        u4 = (match4)[4]
-        u5 = (match4)[5]
-        u6 = (match4)[6]
-        u7 = (match4)[7]
-        u8 = (match4)[8]
-        u9 = (match4)[9]
-        u10 = (match4)[10]
-        u11 = (match4)[11]
-        u12 = (match4)[12]
-        u13 = (match4)[13]
-        u14 = (match4)[14]
-        u15 = (match4)[15]
-        u16 = (match4)[16]
-        u17 = (match4)[17]
-        u18 = (match4)[18]
-        u19 = (match4)[19]
-        u20 = (match4)[20]
-        u21 = (match4)[21]
-        u22 = (match4)[22]
-        u23 = (match4)[23]
-        u24 = (match4)[24]
-        u25 = (match4)[25]
-        u26 = (match4)[26]
-        u27 = (match4)[27]
-        u28 = (match4)[28]
-        u29 = (match4)[29]
-        u30 = (match4)[30]
-        u31 = (match4)[31]
-        u32 = (match4)[32]
-        u33 = (match4)[33]
-        u34 = (match4)[34]
-        u35 = (match4)[35]
-        u36 = (match4)[36]
-    finalforecast.append(
-        (
-            p,
-            p1,
-            p2,
-            p3,
-            p4,
-            p5,
-            p6,
-            p7,
-            p8,
-            q,
-            q1,
-            q2,
-            r,
-            r1,
-            r2,
-            r3,
-            r4,
-            r5,
-            s,
-            s1,
-            s2,
-            s3,
-            s4,
-            s5,
-            t,
-            t1,
-            t2,
-            t3,
-            t4,
-            t5,
-            u,
-            u1,
-            u2,
-            u3,
-            u4,
-            u5,
-            u6,
-            u7,
-            u8,
-            u9,
-            u10,
-            u11,
-            u12,
-            u13,
-            u14,
-            u15,
-            u16,
-            u17,
-            u18,
-            u19,
-            u20,
-            u21,
-            u22,
-            u23,
-            u24,
-            u25,
-            u26,
-            u27,
-            u28,
-            u29,
-            u30,
-            u31,
-            u32,
-            u33,
-            u34,
-            u35,
-            u36,
+        c.execute(
+            "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
         )
-    )
-    print("command executed succesfully")
+        matches_predicted = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted1 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted2 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted3 = c.fetchall()
 
-    stuff_for_frontend = {
-        "finalforecast": finalforecast,
-    }
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted4 = c.fetchall()
+        c.execute(
+            "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted5 = c.fetchall()
+        finalforecast = []
+        for match in matches_predicted:
+            p = (match)[0]
+            p1 = (match)[1]
+            p2 = (match)[2]
+            p3 = (match)[3]
+            p4 = (match)[4]
+            p5 = (match)[5]
+            p6 = (match)[6]
+            p7 = (match)[7]
+            p8 = (match)[8]
 
-    conn.commit()
-    conn.close()
+        for match in matches_predicted1:
+            q = (match)[0]
+            q1 = (match)[1]
+            q2 = (match)[2]
 
-    return render(
-        request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
-    )
+        for match in matches_predicted2:
+            r = (match)[0]
+            r1 = (match)[1]
+            r2 = (match)[2]
+            r3 = (match)[3]
+            r4 = (match)[4]
+            r5 = (match)[5]
+
+        for match in matches_predicted3:
+            s = (match)[0]
+            s1 = (match)[1]
+            s2 = (match)[2]
+            s3 = (match)[3]
+            s4 = (match)[4]
+            s5 = (match)[5]
+        for match in matches_predicted4:
+            t = (match)[0]
+            t1 = (match)[1]
+            t2 = (match)[2]
+            t3 = (match)[3]
+            t4 = (match)[4]
+            t5 = (match)[5]
+
+        for match4 in matches_predicted5:
+            u = (match4)[0]
+
+            u1 = (match4)[1]
+            u2 = (match4)[2]
+            u3 = (match4)[3]
+            u4 = (match4)[4]
+            u5 = (match4)[5]
+            u6 = (match4)[6]
+            u7 = (match4)[7]
+            u8 = (match4)[8]
+            u9 = (match4)[9]
+            u10 = (match4)[10]
+            u11 = (match4)[11]
+            u12 = (match4)[12]
+            u13 = (match4)[13]
+            u14 = (match4)[14]
+            u15 = (match4)[15]
+            u16 = (match4)[16]
+            u17 = (match4)[17]
+            u18 = (match4)[18]
+            u19 = (match4)[19]
+            u20 = (match4)[20]
+            u21 = (match4)[21]
+            u22 = (match4)[22]
+            u23 = (match4)[23]
+            u24 = (match4)[24]
+            u25 = (match4)[25]
+            u26 = (match4)[26]
+            u27 = (match4)[27]
+            u28 = (match4)[28]
+            u29 = (match4)[29]
+            u30 = (match4)[30]
+            u31 = (match4)[31]
+            u32 = (match4)[32]
+            u33 = (match4)[33]
+            u34 = (match4)[34]
+            u35 = (match4)[35]
+            u36 = (match4)[36]
+        finalforecast.append(
+            (
+                p,
+                p1,
+                p2,
+                p3,
+                p4,
+                p5,
+                p6,
+                p7,
+                p8,
+                q,
+                q1,
+                q2,
+                r,
+                r1,
+                r2,
+                r3,
+                r4,
+                r5,
+                s,
+                s1,
+                s2,
+                s3,
+                s4,
+                s5,
+                t,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                u,
+                u1,
+                u2,
+                u3,
+                u4,
+                u5,
+                u6,
+                u7,
+                u8,
+                u9,
+                u10,
+                u11,
+                u12,
+                u13,
+                u14,
+                u15,
+                u16,
+                u17,
+                u18,
+                u19,
+                u20,
+                u21,
+                u22,
+                u23,
+                u24,
+                u25,
+                u26,
+                u27,
+                u28,
+                u29,
+                u30,
+                u31,
+                u32,
+                u33,
+                u34,
+                u35,
+                u36,
+            )
+        )
+        print("command executed succesfully")
+
+        stuff_for_frontend = {
+            "finalforecast": finalforecast,
+        }
+
+        conn.commit()
+        conn.close()
+
+        return render(
+            request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
+        )
+    else:
+        return render(request, "machinesoccer/notfound.html",)
 
 
 def find_finalprediction_of_the_day_next(request):
-    y = request.POST.get("matchid")
-    p = int(y)
-    x = p + 1
-
+    y = request.POST.get("match_identity", "")
     conn = sqlite3.connect("soccer.db")
     c = conn.cursor()
+    p = int(y)
+    x = p + 1
     c.execute(
-        "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
+        "SELECT Hometeam FROM 'finalprediction' WHERE rowid = ?", (x,),
     )
-    matches_predicted = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted1 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted2 = c.fetchall()
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted3 = c.fetchall()
+    matches_available = c.fetchall()
 
-    c.execute(
-        "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted4 = c.fetchall()
-    c.execute(
-        "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
-        (x,),
-    )
-    matches_predicted5 = c.fetchall()
-    finalforecast = []
-    for match in matches_predicted:
-        p = (match)[0]
-        p1 = (match)[1]
-        p2 = (match)[2]
-        p3 = (match)[3]
-        p4 = (match)[4]
-        p5 = (match)[5]
-        p6 = (match)[6]
-        p7 = (match)[7]
-        p8 = (match)[8]
+    # conn.commit()
+    # conn.close()
 
-    for match in matches_predicted1:
-        q = (match)[0]
-        q1 = (match)[1]
-        q2 = (match)[2]
+    if len(matches_available) != 0:
 
-    for match in matches_predicted2:
-        r = (match)[0]
-        r1 = (match)[1]
-        r2 = (match)[2]
-        r3 = (match)[3]
-        r4 = (match)[4]
-        r5 = (match)[5]
+        p = int(y)
+        x = p + 1
 
-    for match in matches_predicted3:
-        s = (match)[0]
-        s1 = (match)[1]
-        s2 = (match)[2]
-        s3 = (match)[3]
-        s4 = (match)[4]
-        s5 = (match)[5]
-    for match in matches_predicted4:
-        t = (match)[0]
-        t1 = (match)[1]
-        t2 = (match)[2]
-        t3 = (match)[3]
-        t4 = (match)[4]
-        t5 = (match)[5]
-
-    for match4 in matches_predicted5:
-        u = (match4)[0]
-
-        u1 = (match4)[1]
-        u2 = (match4)[2]
-        u3 = (match4)[3]
-        u4 = (match4)[4]
-        u5 = (match4)[5]
-        u6 = (match4)[6]
-        u7 = (match4)[7]
-        u8 = (match4)[8]
-        u9 = (match4)[9]
-        u10 = (match4)[10]
-        u11 = (match4)[11]
-        u12 = (match4)[12]
-        u13 = (match4)[13]
-        u14 = (match4)[14]
-        u15 = (match4)[15]
-        u16 = (match4)[16]
-        u17 = (match4)[17]
-        u18 = (match4)[18]
-        u19 = (match4)[19]
-        u20 = (match4)[20]
-        u21 = (match4)[21]
-        u22 = (match4)[22]
-        u23 = (match4)[23]
-        u24 = (match4)[24]
-        u25 = (match4)[25]
-        u26 = (match4)[26]
-        u27 = (match4)[27]
-        u28 = (match4)[28]
-        u29 = (match4)[29]
-        u30 = (match4)[30]
-        u31 = (match4)[31]
-        u32 = (match4)[32]
-        u33 = (match4)[33]
-        u34 = (match4)[34]
-        u35 = (match4)[35]
-        u36 = (match4)[36]
-    finalforecast.append(
-        (
-            p,
-            p1,
-            p2,
-            p3,
-            p4,
-            p5,
-            p6,
-            p7,
-            p8,
-            q,
-            q1,
-            q2,
-            r,
-            r1,
-            r2,
-            r3,
-            r4,
-            r5,
-            s,
-            s1,
-            s2,
-            s3,
-            s4,
-            s5,
-            t,
-            t1,
-            t2,
-            t3,
-            t4,
-            t5,
-            u,
-            u1,
-            u2,
-            u3,
-            u4,
-            u5,
-            u6,
-            u7,
-            u8,
-            u9,
-            u10,
-            u11,
-            u12,
-            u13,
-            u14,
-            u15,
-            u16,
-            u17,
-            u18,
-            u19,
-            u20,
-            u21,
-            u22,
-            u23,
-            u24,
-            u25,
-            u26,
-            u27,
-            u28,
-            u29,
-            u30,
-            u31,
-            u32,
-            u33,
-            u34,
-            u35,
-            u36,
+        # conn = sqlite3.connect("soccer.db")
+        # c = conn.cursor()
+        c.execute(
+            "SELECT rowid, Date, Hometeam, Awayteam, Home_pg, Away_pg,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
         )
-    )
-    print("command executed succesfully")
+        matches_predicted = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,homewinodds,Drawodds,Awaywinodds FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted1 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over15,Under15 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted2 = c.fetchall()
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,Over25,Under25 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted3 = c.fetchall()
 
-    stuff_for_frontend = {
-        "finalforecast": finalforecast,
-    }
+        c.execute(
+            "SELECT rowid,Date, Hometeam,Awayteam,bttsyes,bttsno FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted4 = c.fetchall()
+        c.execute(
+            "SELECT rowid, cs1_0,cs2_0,cs3_0,cs4_0,cs5_0,cs2_1,cs3_1,cs3_2,cs4_1,cs4_2,cs4_3,cs5_1,cs5_2,cs5_3,cs5_4,cs0_0,cs1_1,cs2_2,cs3_3,cs4_4,cs5_5,cs0_1,cs0_2,cs0_3,cs0_4,cs0_5,cs1_2,cs1_3,cs2_3,cs1_4,cs2_4,cs3_4,cs1_5,cs2_5,cs3_5,cs4_5 FROM 'finalprediction' WHERE rowid = ?",
+            (x,),
+        )
+        matches_predicted5 = c.fetchall()
+        finalforecast = []
+        for match in matches_predicted:
+            p = (match)[0]
+            p1 = (match)[1]
+            p2 = (match)[2]
+            p3 = (match)[3]
+            p4 = (match)[4]
+            p5 = (match)[5]
+            p6 = (match)[6]
+            p7 = (match)[7]
+            p8 = (match)[8]
 
-    conn.commit()
-    conn.close()
+        for match in matches_predicted1:
+            q = (match)[0]
+            q1 = (match)[1]
+            q2 = (match)[2]
 
-    return render(
-        request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
-    )
+        for match in matches_predicted2:
+            r = (match)[0]
+            r1 = (match)[1]
+            r2 = (match)[2]
+            r3 = (match)[3]
+            r4 = (match)[4]
+            r5 = (match)[5]
+
+        for match in matches_predicted3:
+            s = (match)[0]
+            s1 = (match)[1]
+            s2 = (match)[2]
+            s3 = (match)[3]
+            s4 = (match)[4]
+            s5 = (match)[5]
+        for match in matches_predicted4:
+            t = (match)[0]
+            t1 = (match)[1]
+            t2 = (match)[2]
+            t3 = (match)[3]
+            t4 = (match)[4]
+            t5 = (match)[5]
+
+        for match4 in matches_predicted5:
+            u = (match4)[0]
+
+            u1 = (match4)[1]
+            u2 = (match4)[2]
+            u3 = (match4)[3]
+            u4 = (match4)[4]
+            u5 = (match4)[5]
+            u6 = (match4)[6]
+            u7 = (match4)[7]
+            u8 = (match4)[8]
+            u9 = (match4)[9]
+            u10 = (match4)[10]
+            u11 = (match4)[11]
+            u12 = (match4)[12]
+            u13 = (match4)[13]
+            u14 = (match4)[14]
+            u15 = (match4)[15]
+            u16 = (match4)[16]
+            u17 = (match4)[17]
+            u18 = (match4)[18]
+            u19 = (match4)[19]
+            u20 = (match4)[20]
+            u21 = (match4)[21]
+            u22 = (match4)[22]
+            u23 = (match4)[23]
+            u24 = (match4)[24]
+            u25 = (match4)[25]
+            u26 = (match4)[26]
+            u27 = (match4)[27]
+            u28 = (match4)[28]
+            u29 = (match4)[29]
+            u30 = (match4)[30]
+            u31 = (match4)[31]
+            u32 = (match4)[32]
+            u33 = (match4)[33]
+            u34 = (match4)[34]
+            u35 = (match4)[35]
+            u36 = (match4)[36]
+        finalforecast.append(
+            (
+                p,
+                p1,
+                p2,
+                p3,
+                p4,
+                p5,
+                p6,
+                p7,
+                p8,
+                q,
+                q1,
+                q2,
+                r,
+                r1,
+                r2,
+                r3,
+                r4,
+                r5,
+                s,
+                s1,
+                s2,
+                s3,
+                s4,
+                s5,
+                t,
+                t1,
+                t2,
+                t3,
+                t4,
+                t5,
+                u,
+                u1,
+                u2,
+                u3,
+                u4,
+                u5,
+                u6,
+                u7,
+                u8,
+                u9,
+                u10,
+                u11,
+                u12,
+                u13,
+                u14,
+                u15,
+                u16,
+                u17,
+                u18,
+                u19,
+                u20,
+                u21,
+                u22,
+                u23,
+                u24,
+                u25,
+                u26,
+                u27,
+                u28,
+                u29,
+                u30,
+                u31,
+                u32,
+                u33,
+                u34,
+                u35,
+                u36,
+            )
+        )
+        print("command executed succesfully")
+
+        stuff_for_frontend = {
+            "finalforecast": finalforecast,
+        }
+
+        conn.commit()
+        conn.close()
+
+        return render(
+            request, "machinesoccer/finalprediction_of_the_day.html", stuff_for_frontend
+        )
+    else:
+        return render(request, "machinesoccer/notfound.html",)
 
 
 # def perform_magic(request):

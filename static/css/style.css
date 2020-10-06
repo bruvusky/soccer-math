@@ -6,7 +6,7 @@
 
 
 }
-.vector,.vector1{
+.vector{
     margin-top: 5px;
     margin-left: 5px;
     margin-bottom: 5px;
@@ -14,9 +14,30 @@
     float: left;
     width: fit-content;
     height: fit-content;
+    display: flex;
+    
+}
+.vector2 {
+    cursor: pointer;
+    color: rgb(30, 196, 30);
+    /* display: block; */
+    padding: 10px;
+    margin: 3px;
+    
     
 }
 
+label.vector3 {
+    color: rgb(32, 212, 62);
+    
+    
+}
+  
+.success {background-color: #4CAF50;} /* Green */
+.info {background-color: #2196F3;} /* Blue */
+.warning {background-color: #ff9800;} /* Orange */
+.danger {background-color: #f44336;} /* Red */
+.other {background-color: #e7e7e7; color: black;} /* Gray */
 
 
    

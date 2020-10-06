@@ -54,37 +54,43 @@
             </div>
         </div>
         <div class="vector">
-            <form action="{%url 'create_hometable'%}" method="POST" class="form-inline">
-                {% csrf_token %}
-                <button class="btn waves-effect waves-light" type="submit" name="action"
-                    class="btn btn-primary mb-2">create_hometable
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            <div class="col s3">
+                <form action="{%url 'create_hometable'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">create_hometable
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
         </div>
         <div class="vector">
-            <form action="{%url 'create_awaytable'%}" method="POST" class="form-inline">
-                {% csrf_token %}
-                <button class="btn waves-effect waves-light" type="submit" name="action"
-                    class="btn btn-primary mb-2">create_awaytable
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            <div class="col s3">
+                <form action="{%url 'create_awaytable'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">create_awaytable
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
         </div>
         <div class="vector">
-            <form action="{%url 'drop_home_away_stats_table'%}" method="POST" class="form-inline">
-                {% csrf_token %}
-                <button class="btn waves-effect waves-light" type="submit" name="action"
-                    class="btn btn-primary mb-2">DROP_H/A_TABLE
-                    <i class="material-icons dp48">delete_forever</i>
-                </button>
-            </form>
+            <div class="col s3">
+                <form action="{%url 'drop_home_away_stats_table'%}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action"
+                        class="btn btn-primary mb-2">DROP_H/A_TABLE
+                        <i class="material-icons dp48">delete_forever</i>
+                    </button>
+                </form>
+            </div>
         </div>
 
 
 
-        <div>
-            <div class="vector">
+        <div class="vector">
+            <div class="col s3">
                 <form action="{%url 'create_prediction_table'%}" method="POST" class="form-inline">
                     {% csrf_token %}
                     <button class="btn waves-effect waves-light" type="submit" name="action"
@@ -93,7 +99,9 @@
                     </button>
                 </form>
             </div>
-            <div class="vector">
+        </div>
+        <div class="vector">
+            <div class="col s3">
                 <form action="{%url 'drop_prediction_table'%}" method="POST" class="form-inline">
                     {% csrf_token %}
                     <button class="btn waves-effect waves-light" type="submit" name="action"
@@ -106,7 +114,10 @@
                     </button>
                 </form>
             </div>
-            <div class="vector">
+        </div>
+
+        <div class="vector">
+            <div class="col s3">
                 <form action="{%url 'clear_prediction_table'%}" method="POST" class="form-inline">
                     {% csrf_token %}
                     <button class="btn waves-effect waves-light" type="submit" name="action"
@@ -121,53 +132,54 @@
                     </button>
                 </form>
             </div>
-
-            <div class="vector">
-                <form action="{%url 'clear_item_in_prediction_table'%}" method="POST" class="form-inline">
-                    {% csrf_token %}
-                    <select class="custom-select" name="id">
-                        <option selected>enter id of row in table</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-
-                    </select>
-                    <button class="btn waves-effect waves-light" type="submit" name="action"
-                        class="btn btn-primary mb-2">clear_item_in_prediction
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                            <path fill-rule="evenodd"
-                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                        </svg>
-                    </button>
-                </form>
-            </div>
         </div>
+    </div>
+    <div class="vector">
+        <form action="{%url 'clear_item_in_prediction_table'%}" method="POST" class="form-inline">
+            {% csrf_token %}
+            <select class="custom-select" name="id">
+                <option selected>enter id of row in table</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+
+            </select>
+            <button class="btn waves-effect waves-light" type="submit" name="action"
+                class="btn btn-primary mb-2">clear_item_in_prediction
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+            </button>
+        </form>
+    </div>
+    </div>
     </div>
 
 

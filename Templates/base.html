@@ -137,120 +137,255 @@
     <div class="vector">
         <form action="{%url 'clear_item_in_prediction_table'%}" method="POST" class="form-inline">
             {% csrf_token %}
-            <select class="custom-select" name="id">
-                <option selected>enter id of row in table</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-
-            </select>
-            <button class="btn waves-effect waves-light" type="submit" name="action"
-                class="btn btn-primary mb-2">clear_item_in_prediction
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                    <path fill-rule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                </svg>
-            </button>
+            <div class="vector">
+                <input class="form-control mr-sm-2" type="search" placeholder="Enter match id here..."
+                                    name="matchid" aria-label="Search">
+            </div>
+            <div class="vector">
+                <button class="btn waves-effect waves-light" type="submit" name="action"
+                    class="btn btn-primary mb-2">clear_item_in_prediction
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                    </svg>
+                </button>
+            </div>
+            
         </form>
     </div>
     </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     {% block content %}
 
     {% endblock content %}
-    <div class="vector">
+    <p>
+        <div class="vector">
+            <form action=" {%url 'new_search'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <select class="custom-select" name="search">
+                    <option selected>Choose...League competition</option>
+                    <option value="england">England EPL</option>
+                    <option value="england_2020">England EPL 2019/2020 </option>
+                    <option value="england16">England EPL DIV 2 </option>
+                    <option value="italy_2020">Italy 2019/2020</option>
+                    <option value="italy">italy Serie A</option>
+                    <option value="italy3">italy Serie C group a</option>
+                    <option value="italy5">italy Serie C group c</option>
+                    <option value="italy5_2020">italy Serie C group c 2019/2020</option>
+                    <option value="netherlands">Netherlands</option>
+                    <option value="netherlands2">Netherlands 2nd division</option>
+                    <option value="brazil">Brazil </option>
+                    <option value="belgium">Belgium Division A  </option>
+                    <option value="egypt">Egypt premier League</option>
+                    <option value="england2">Championship </option>
+                    <option value="england2_2020">Championship 2019/2020</option>
+                    <option value="england3_2020">League one 2019/2020 </option>
+                    <option value="england4_2020">League two 2019/2020 </option>
+                    <option value="england8_2020"> Isthmian league france_2020</option>
+                    <option value="france_2020">france league 1 2019/2020 </option>
+                    <option value="france">France league ONE </option>
+                    <option value="france2">France league TWO </option>
+                    <option value="france2_2020">France league TWO 2019/2020 </option>
+                    <option value="france3_2020">france NATIONAL League 3 2019/2020  </option>
+                    <option value="france3">france NATIONAL League 3  </option>
+                    <option value="germany_2020">Germany league 1 2019/2020</option>
+                    <option value="germany">Germany league 1 </option>
+                    <option value="germany2">Germany league 2 </option>
+                    <option value="armenia ">Armenia</option>
+                    <option value="armenia2">Armenia2</option>
+                    <option value="austria">Austria</option>
+                    <option value="austria2_2020">Austria league 2</option>
+                    <option value="australia">Australia</option>
+                    <option value="australia2">Australia league 2</option>
+                    <option value="belgium">Belgium division A</option>
+                    <option value="colombia3">colombia Primera-B Apertura</option>
+                    <option value="czechrepublic">CzechRepublic</option>
+                    <option value="czechrepublic2">CzechRepublic league 2</option>
+                    <option value="denmark">Denmark</option>
+                    <option value="denmark_2020">Denmark 2019</option>
+                    <option value="denmark2">Denmark league 2</option>
+                    <option value="denmark2_2020 ">Denmark league 2 2019</option>
+                    <option value="israel_2020">Israel 2019</option>
+                    <option value="india_2020">India 2019/2020 </option>
+                    <option value="israel">Israel</option>
+                    <option value="iran">Iran</option>
+                    <option value="finland_2019">Finland_2019 finland2</option>
+                    <option value="finland2"> finland yokkonen</option>
+                    
+                    <option value="netherlands2_2020">Netherlands2</option>
+                    <option value="norway_2019">Norway_2019</option>
+                    <option value="norway">Norway</option>
+                    <option value="norway2">Norway division 2</option>
+                    <option value="israel2">Israel league 2 </option>
+                    <option value="japan">Japan League 1</option>
+                    <option value="kazakhstan_2019"> kazakhstan Premier league_2019</option>
+                    <option value="kazakhstan"> kazakhstan Premier league</option>
+                    <option value="kuwait">kuwait_premier_league</option>
+                    <option value="kuwait_2020">kuwait_premier_league_2019/2020</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="portugal2_2020">Portugal2_2019 russia</option>
+                    <option value="russia">Russia Premier League </option>
+                    <option value="russia2">Russia  League 2 </option>
+                    <option value="spain2_2020">Spain league 2_2019</option>
+                    <option value="spain2">Spain league 2</option>
+                    <option value="spain">Spain</option>
+                    <option value="spain_2020">Spain La liga 2019</option>
+                    <option value="saudiarabia_2020">Saudiarabia_2019/2020</option>
+                    <option value="saudiarabia">Saudiarabia</option>
+                    <option value="russia">Russia</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="scotland_2020">Scotland_2019/2020</option>
+                    <option value="uae_2020"> UAE  </option>
+                    <option value="uae"> UAE 2019/2020 </option>
+                    <option value="ukraine"> Ukraine league</option>
+                    <option value="ukraine2 "> Ukraine league 2 </option>
+                    <option value="usa"> MLS league </option>
+                    <option value="wales_2020">Wales premier_2019</option>
+                    <option value="southkorea"> SouthKorea</option>    
+            
+                <!-- <input type=" text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Type league here..."> -->
+                
 
-        <form action=" {%url 'new_search'%}" method="POST" class="form-inline">
+
+                </select>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+            
+            
+            
+        </div>
+    
+    </p>
+
+    <div class="vector">
+        <form action=" {%url 'new_searchone'%}" method="POST" class="form-inline">
             {% csrf_token %}
             <!-- <input type=" text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Type league here..."> -->
-            <select class="custom-select" name="search">
-                <option selected>Choose...League competition</option>
-                <option value="england">England EPL</option>
-                <option value="england_2020">England EPL 2019/2020</option>
-                <option value="england2">Championship</option>
-                <option value="england8_2020"> Isthmian league</option>
-                <option value="germany  ">Germany</option>
-                <option value="armenia ">Armenia</option>
-                <option value="armenia2">Armenia2</option>
-                <option value="austria">Austria</option>
-                <option value="austria2_2020">Austria league 2</option>
-                <option value="australia">Australia</option>
-                <option value="australia2">Australia league 2</option>
-                <option value="belgium">Belgium division A</option>
-                <option value="czechrepublic ">CzechRepublic</option>
-                <option value="czechrepublic2">CzechRepublic league 2</option>
-                <option value="denmark_2020">Denmark 2019</option>
-                <option value="denmark2">Denmark league 2</option>
-                <option value="denmark2_2020 ">Denmark league 2 2019</option>
-                <option value="israel">Israel</option>
-                <option value="iran">Iran</option>
-                <option value="finland_2019">Finland_2019</option>
+            <div class="vector">
+                <select class="custom-select" name="search">
+                    <option selected>Choose...League competition</option>
+                    <option value="england">England EPL</option>
+                    <option value="italy">italy Serie A </option>
+                    <option value="belgium">Belgium Division A  </option>
+                    <option value="egypt">Egypt premier League</option>
+                    <option value="england2">Championship</option>
+                    <option value="greece">Greece</option>
+                    <option value="sweden">sweden Allsvenskan </option>
+                    <option value="england4_2020">League two 2019/2020 </option>
+                    <option value="england8_2020"> Isthmian league france_2020</option>
+                    <option value="france">france league 1</option>
+                    <option value="france_2020">france league 1 2019/2020</option>
+                    <option value="germany">Germany league 1</option>
+                    <option value="germany_2020">Germany league 1 2019/2020</option>
+                    <option value="armenia ">Armenia</option>
+                    <option value="armenia2">Armenia2</option>
+                    <option value="austria">Austria</option>
+                    <option value="austria2_2020">Austria league 2</option>
+                    <option value="australia">Australia</option>
+                    <option value="australia2">Australia league 2</option>
+                    <option value="belgium">Belgium division A</option>
+                    <option value="colombia3">colombia Primera-B Apertura</option>
+                    <option value="czechrepublic">CzechRepublic</option>
+                    <option value="czechrepublic2">CzechRepublic league 2</option>
+                    <option value="denmark_2020">Denmark 2019</option>
+                    <option value="denmark2">Denmark league 2</option>
+                    <option value="denmark2_2020 ">Denmark league 2 2019</option>
+                    <option value="israel">Israel</option>
+                    <option value="iran">Iran</option>
+                    <option value="finland_2019">Finland_2019 finland2</option>
+                    <option value="finland2"> finland yokkonen</option>
+                    <option value="italy_2020">Italy</option>
+                    <option value="netherlands2_2020">Netherlands2</option>
+                    <option value="norway">Norway</option>
+                    <option value="norway2">Norway division 2</option>
+                    <option value="israel2">Israel league 2</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="russia">Russia Premier League </option>
+                    <option value="portugal2_2020">Portugal2_2019</option>
+                    <option value="spain2">Spain league 2</option>
+                    <option value="spain">Spain</option>
+                    <option value="spain_2020">Spain La liga 2019</option>
+                    <option value="russia">Russia</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="scotland_2020">Scotland_2019/2020</option>
+                    <option value="ukraine"> Ukraine league</option>
+                    <option value="ukraine2"> Ukraine league 2 </option>
+                    <option value="usa"> MLS league </option>
+                    <option value="vietnam_2019">vietnam </option>
+                    <option value="wales_2020">Wales premier_2019</option>
+                    <option value="southkorea"> SouthKorea</option>
 
-                <option value="italy_2020">Italy</option>
-                <option value="netherlands2_2020">Netherlands2</option>
-                <option value="norway">Norway</option>
-                <option value="norway2">Norway division 2</option>
-                <option value="israel2">Israel league 2</option>
-                <option value="portugal">Portugal</option>
-                <option value="portugal2_2020">Portugal2_2019</option>
-                <option value="spain2">Spain league 2</option>
-                <option value="spain">Spain</option>
-                <option value="spain_2020">Spain La liga 2019</option>
-                <option value="russia">Russia</option>
-                <option value="switzerland">Switzerland</option>
-                <option value="scotland_2020">Scotland_2019/2020</option>
-                <option value="ukraine2"> Ukraine league 2wales_2020</option>
-                <option value="wales_2020">Wales premier_2019</option>
-                <option value="southkorea"> SouthKorea</option>
+
+                </select>
+            </div>
+            <div class="vector">
+                <select class="custom-select" name="search1">
+                    <option selected>Choose...League competition</option>
+                    <option value="england">England EPL</option>
+                    <option value="italy">italy Serie A </option>
+                    <option value="belgium">Belgium Division A </option>
+                    <option value="egypt">Egypt premier League</option>
+                    <option value="england2">Championship</option>
+                    <option value="greece">Greece</option>
+                    <option value="sweden">sweden Allsvenskan </option>
+                    <option value="england4_2020">League two 2019/2020 </option>
+                    <option value="england8_2020"> Isthmian league france_2020</option>
+                    <option value="france">france league 1</option>
+                    <option value="france_2020">france league 1 2019/2020</option>
+                    <option value="germany">Germany league 1</option>
+                    <option value="germany_2020">Germany league 1 2019/2020</option>
+                    <option value="armenia ">Armenia</option>
+                    <option value="armenia2">Armenia2</option>
+                    <option value="austria">Austria</option>
+                    <option value="austria2_2020">Austria league 2</option>
+                    <option value="australia">Australia</option>
+                    <option value="australia2">Australia league 2</option>
+                    <option value="belgium">Belgium division A</option>
+                    <option value="colombia3">colombia Primera-B Apertura</option>
+                    <option value="czechrepublic">CzechRepublic</option>
+                    <option value="czechrepublic2">CzechRepublic league 2</option>
+                    <option value="denmark_2020">Denmark 2019</option>
+                    <option value="denmark2">Denmark league 2</option>
+                    <option value="denmark2_2020 ">Denmark league 2 2019</option>
+                    <option value="israel">Israel</option>
+                    <option value="iran">Iran</option>
+                    <option value="finland_2019">Finland_2019 finland2</option>
+                    <option value="finland2"> finland yokkonen</option>
+                    <option value="italy">Italy</option>
+                    <option value="italy_2020">Italy 2019/2020</option>
+                    <option value="netherlands2_2020">Netherlands2</option>
+                    <option value="norway">Norway</option>
+                    <option value="norway2">Norway division 2</option>
+                    <option value="israel2">Israel league 2</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="portugal2_2020">Portugal2_2019</option>
+                    <option value="russia">Russia Premier League </option>
+                    <option value="spain2">Spain league 2</option>
+                    <option value="spain">Spain</option>
+                    <option value="spain_2020">Spain La liga 2019</option>
+                    <option value="russia">Russia</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="scotland_2020">Scotland_2019/2020</option>
+                    <option value="ukraine"> Ukraine league</option>
+                    <option value="ukraine2"> Ukraine league 2 </option>
+                    <option value="usa"> MLS league </option>
+                    <option value="vietnam_2019">vietnam </option>
+                    <option value="wales_2020">Wales premier_2019</option>
+                    <option value="southkorea"> SouthKorea</option>
 
 
-            </select>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                </select>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit_zero
                 <i class="material-icons right">send</i>
             </button>
+
         </form>
     </div>
 
@@ -259,25 +394,28 @@
 
 
     <div class="vector">
-        <form action="{%url 'clear_tables_function'%}" method="POST" class="form-inline">
-            {% csrf_token %}
-            <button class="btn waves-effect waves-light" type="submit" name="action" class="btn btn-primary mb-2">Clear
-                tables
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-table" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
-                </svg>
-            </button>
-        </form>
-    </div>
-    <div class="vector">
-        <form action="{%url 'insert_into_db_tables'%}" method="POST" class="form-inline">
-            {% csrf_token %}
-            <button class="btn waves-effect waves-light" type="submit" name="action">Insert DB
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
+        <div class="vector">
+            <form action="{%url 'clear_tables_function'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action" class="btn btn-primary mb-2">Clear
+                    tables
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-table" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    
+        <div class="vector">
+            <form action="{%url 'insert_into_db_tables'%}" method="POST" class="form-inline">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light" type="submit" name="action">Insert DB
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+      </div>
     </div>
     <div class="vector">
         <form action="{%url 'query_tables_function'%}" method="POST" class="form-inline">

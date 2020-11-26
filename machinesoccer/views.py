@@ -28,13 +28,14 @@ def home(request):
 def new_search(request):
 
     search = request.POST.get("search")
+    search1 = request.POST.get("search1")
     position = request.POST.get("position")
     position1 = request.POST.get("position1")
-
+    print(search1)
     # print(search + " " + position + " " + position1)
 
     BASE_URL = "https://www.soccerstats.com/homeaway.asp?league={}"
-    final_url = BASE_URL.format(quote_plus(search))
+    final_url = BASE_URL.format(quote_plus(search or search1))
     page = requests.get(final_url)
     soup = BeautifulSoup(page.content, "html.parser")
     filename = "home.csv"
@@ -43,14 +44,14 @@ def new_search(request):
     csv_writer1 = csv.writer(open(filename1, "w"))
     home_stat = soup.find(id="h2h-team1")
     away_stat = soup.find(id="h2h-team2")
-    home_table = home_stat.find("table", id="btable")
-    away_table = away_stat.find("table", id="btable")
+    home_table = home_stat.find("table")
+    away_table = away_stat.find("table")
     # print (home_table)
 
-    headers = []
-    for th in home_table.find("tr", class_="even").find_all("th"):
-        headers.append(th.text.strip())
-    print(" {}".format(" , ".join(headers)))
+    # headers = []
+    # for td in home_table.find("tr", class_="odd").find_all("td"):
+    #     headers.append(td.text.strip())
+    # print(" {}".format(" , ".join(headers)))
     # csv_writer.writerow(headers)
 
     rows = []
@@ -67,10 +68,10 @@ def new_search(request):
             csv_writer.writerow(cells)
             continue
 
-    headers1 = []
-    for th in away_table.find("tr", class_="even").find_all("th"):
-        headers1.append(th.text.strip())
-    print(" {}".format(" , ".join(headers)))
+    # headers1 = []
+    # for th in away_table.find("tr", class_="even" or "odd").find_all("th"):
+    #     headers1.append(th.text.strip())
+    # print(" {}".format(" , ".join(headers)))
     # csv_writer1.writerow(headers1)
 
     rows1 = []
@@ -86,6 +87,111 @@ def new_search(request):
             print("{}".format(" , ".join(cells1)))
             csv_writer1.writerow(cells1)
             continue
+
+    stuff_for_frontend = {
+        "search": search,
+        "position": position,
+        "position1": position1,
+    }
+
+    return render(request, "machinesoccer/new_search.html", stuff_for_frontend)
+
+
+def new_searchone(request):
+
+    search = request.POST.get("search")
+    search1 = request.POST.get("search1")
+    position = request.POST.get("position")
+    position1 = request.POST.get("position1")
+
+    # print(search + " " + position + " " + position1)
+
+    BASE_URL = "https://www.soccerstats.com/homeaway.asp?league={}"
+    final_url = BASE_URL.format(quote_plus(search))
+    page = requests.get(final_url)
+    soup = BeautifulSoup(page.content, "html.parser")
+    filename = "home.csv"
+    # filename1 = "away.csv"
+    csv_writer = csv.writer(open(filename, "w"))
+    # csv_writer1 = csv.writer(open(filename1, "w"))
+    home_stat = soup.find(id="h2h-team1")
+    # away_stat = soup.find(id="h2h-team2")
+    home_table = home_stat.find("table")
+    # away_table = away_stat.find("table")
+    # print (home_table)
+
+    # headers = []
+    # for td in home_table.find("tr", class_="odd").find_all("td"):
+    #     headers.append(td.text.strip())
+    # print(" {}".format(" , ".join(headers)))
+    # csv_writer.writerow(headers)
+
+    rows = []
+    for tr in home_table.find_all("tr", class_="odd"):
+        cells = []
+        # grab all td tags in this table row
+        tds = tr.find_all("td")
+
+        for td in tds:
+            cells.append(td.text.strip())
+        rows.append(cells)
+        if cells:  # print(cells)
+            print("{}".format(" , ".join(cells)))
+            csv_writer.writerow(cells)
+            continue
+
+    final_url1 = BASE_URL.format(quote_plus(search1))
+    page = requests.get(final_url1)
+    soup = BeautifulSoup(page.content, "html.parser")
+    # filename = "home.csv"
+    filename1 = "away.csv"
+    # csv_writer = csv.writer(open(filename, "w"))
+    csv_writer1 = csv.writer(open(filename1, "w"))
+    # home_stat = soup.find(id="h2h-team1")
+    away_stat = soup.find(id="h2h-team2")
+    # home_table = home_stat.find("table")
+    away_table = away_stat.find("table")
+    # print (home_table)
+
+    # headers = []
+    # for td in home_table.find("tr", class_="odd").find_all("td"):
+    #     headers.append(td.text.strip())
+    # print(" {}".format(" , ".join(headers)))
+    # csv_writer.writerow(headers)
+
+    rows = []
+    for tr in away_table.find_all("tr", class_="odd"):
+        cells = []
+        # grab all td tags in this table row
+        tds = tr.find_all("td")
+
+        for td in tds:
+            cells.append(td.text.strip())
+        rows.append(cells)
+        if cells:  # print(cells)
+            print("{}".format(" , ".join(cells)))
+            csv_writer1.writerow(cells)
+            continue
+
+    # headers1 = []
+    # for th in away_table.find("tr", class_="even" or "odd").find_all("th"):
+    #     headers1.append(th.text.strip())
+    # print(" {}".format(" , ".join(headers)))
+    # csv_writer1.writerow(headers1)
+
+    # rows1 = []
+    # for tr in away_table.find_all("tr", class_="odd"):
+    #     cells1 = []
+    # grab all td tags in this table row
+    # tds1 = tr.find_all("td")
+
+    # for td in tds1:
+    #     cells1.append(td.text.strip())
+    # rows1.append(cells1)
+    # if cells1:  # print(cells)
+    # print("{}".format(" , ".join(cells1)))
+    # csv_writer1.writerow(cells1)
+    # continue
 
     stuff_for_frontend = {
         "search": search,
@@ -241,7 +347,7 @@ def drop_home_away_stats_table(request):
 
 def clear_item_in_prediction_table(request):
 
-    rowid = request.POST.get("id")
+    rowid = request.POST.get("matchid")
 
     conn = sqlite3.connect("soccer.db")
     c = conn.cursor()
